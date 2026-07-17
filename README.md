@@ -1,4 +1,4 @@
-# VirtualBox - Virtualbox Drag &amp; Drop Setting
+# VirtualBox - Virtualbox Drag &amp; Drop Setting - On the Rocky Linux 8
 
 **Network Setup on Virtual Box VM	ping google.com**
 **nmcli device connect enp0s3	ip addr**
@@ -37,10 +37,10 @@
 	sudo /mnt/VBoxLinuxAdditions.run
 	
 	
-**virtualbox vm putty connection**	
+**VirtualBox VM Putty Connection**	
 
 	**select network bridge**
-	**On the Rocky Linux VM:**
+
 	
 	1. Install and start SSH on the VM
 	
