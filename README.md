@@ -1,5 +1,4 @@
-# virtualbox
-Virtualbox Drag &amp; Drop Setting
+# VirtualBox - Virtualbox Drag &amp; Drop Setting
 
 **Network Setup on Virtual Box VM	ping google.com**
 **nmcli device connect enp0s3	ip addr**
@@ -39,9 +38,11 @@ Virtualbox Drag &amp; Drop Setting
 	
 	
 **virtualbox vm putty connection**	
-**1. Install and start SSH on the VM**
+
 	**select network bridge**
 	**On the Rocky Linux VM:**
+	
+	1. Install and start SSH on the VM
 	
 	sudo dnf install -y openssh-server
 	sudo systemctl enable --now sshd
