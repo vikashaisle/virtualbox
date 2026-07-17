@@ -1,19 +1,31 @@
 # virtualbox
 Virtualbox Drag &amp; Drop Setting
 
-Network Setup on Virtual Box VM	ping google.com
-nmcli device connect enp0s3	ip addr
+**Network Setup on Virtual Box VM	ping google.com**
+**nmcli device connect enp0s3	ip addr**
+
 	nmcli device status
+	
 	nmcli connection show
+	
 	nmcli connection show enp0s3
+	
 	nmcli connection modify enp0s3 connection.autoconnect yes
+	
 	ip addr show enp0s3
+	
 	nmcli connection up enp0s3
+	
 	ip addr show enp0s3
+	
 	cat /etc/resolv.conf
+	
 	systemctl restart NetworkManager
+	
 	nmcli connection up enp0s3
+	
 	ping google.com
+	
 	
 **Enable Drag & Drop on Virtual Box VM	Change clipboard and drag & drop Bidirectional**
 	
