@@ -53,4 +53,33 @@
 	sudo firewall-cmd --permanent --add-service=ssh
 	sudo firewall-cmd --reload
 
+	**Fix: force Ruby to load logger first** For Ruby 3.3.0 with Rail
+
+	ruby -rlogger -e "require 'rails/cli'" 2>&1 | head -5
+	
+	export RUBYOPT="-rlogger"
+	
+    rails -v
+
+
+	<h2>Fix: force Ruby to load logger first</h2>
+Quick one-off test:
+bashruby -rlogger -e "require 'rails/cli'" 2>&1 | head -5
+Actual fix — set RUBYOPT so every Ruby process requires logger before anything else runs:
+bashexport RUBYOPT="-rlogger"
+rails -v
+If that works, make it permanent by adding it to your shell config:
+bashecho 'export RUBYOPT="-rlogger"' >> ~/.bashrc   # or ~/.zshrc if you use zsh
+source ~/.bashrc
+Then confirm:
+bashrails -v
+# should print: Rails 6.1.7.6
+Why this works
+Ruby 3.3's rubygems no longer implicitly pulls in logger as part of its core loading process the way older Ruby versions did. Rails 6.1's activesupport (all patch versions, including 6.1.7.6) references Logger::Severity directly without ever calling require "logger" itself — it always depended on something else loading it first. RUBYOPT="-rlogger" patches that gap globally for your shell/rbenv version.
+Inside an actual Rails app
+Once you get past rails -v and start building an app (rails new myapp), also add this to the generated Gemfile so it works for anyone else running bundle exec rails without your shell's RUBYOPT set:
+rubygem "logger", "~> 1.4.2"
+Then:
+bashbundle install
+
 
