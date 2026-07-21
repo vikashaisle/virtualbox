@@ -53,7 +53,8 @@
 	sudo firewall-cmd --permanent --add-service=ssh
 	sudo firewall-cmd --reload
 
-	**Fix: force Ruby to load logger first** For Ruby 3.3.0 with Rail
+	
+	**Fix: force Ruby to load logger first  :: For Ruby 3.3.0 with Rail**
 
 	ruby -rlogger -e "require 'rails/cli'" 2>&1 | head -5
 	
